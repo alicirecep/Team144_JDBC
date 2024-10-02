@@ -20,7 +20,13 @@
       <console name="T144_DERS" type="STANDARD" schema="u201212290_loantec" session="Main"><![CDATA[SELECT * FROM users;
 SELECT * FROM deposits;
 
-SELECT DISTINCT user_id FROM deposits WHERE amount BETWEEN 200 AND 500;]]></console>
+SELECT DISTINCT user_id FROM deposits WHERE amount BETWEEN 200 AND 500;
+
+SELECT name FROM  cron_schedules LIMIT 2;
+
+SELECT * FROM users;
+
+UPDATE users SET mobile = '89898998' WHERE username LIKE '%e_';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
