@@ -26,16 +26,18 @@ SELECT name FROM  cron_schedules LIMIT 2;
 
 SELECT * FROM users;
 
-UPDATE users SET mobile = '89898998' WHERE username LIKE '%e_';]]></console>
+UPDATE users SET mobile = '89898998' WHERE username LIKE '%e_';
+
+SELECT * FROM admin_notifications;
+
+UPDATE admin_notifications SET is_read = ? WHERE id = ?;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="54b3a016-b7aa-4271-b1b7-c7730fada96d" object-ref="consoles/T144_DERS" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="54b3a016-b7aa-4271-b1b7-c7730fada96d" />

@@ -30,17 +30,19 @@ public class StepDefinition {
 	String USERNAME= "u201212290_loantecuser";
 	String PASSWORD="HPo?+7r$";
 */
-		connection = DriverManager.getConnection(ConfigReader.getProperty("URL"),
+	/*	connection = DriverManager.getConnection(ConfigReader.getProperty("URL"),
 				ConfigReader.getProperty("USERNAME"),
 				ConfigReader.getProperty("PASSWORD"));
+		*/
+
+		connection = JDBCReusableMethods.getConnection();
+
 	}
 
 	@Given("Database baglantisi kapatilir.")
 	public void database_baglantisi_kapatilir() throws SQLException {
 
-		resultSet.close();
-		statement.close();
-		connection.close();
+		JDBCReusableMethods.closeConnection();
 	}
 
 	@Given("SQL Query01 hazirlanir ve calistirilir.")
@@ -111,9 +113,9 @@ public class StepDefinition {
 	    query = queryManage.getPreparedUpdate01();
 		preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
 
-		preparedStatement.setString(1, "12211221");
-		preparedStatement.setString(2, "%e");
-
+		preparedStatement.setString(1, "222222222");
+		preparedStatement.setString(2, "%e_");
+		//"UPDATE users SET mobile = ? WHERE username LIKE ?;";
 		  intResult = preparedStatement.executeUpdate();
 
 	}
@@ -126,6 +128,34 @@ public class StepDefinition {
 	}
 
 
+//************UPDATE QUERY 02 ***********************
+
+	@Given("UpdateQuery02 hazirlanir ve calistirilir.")
+	public void update_query02_hazirlanir_ve_calistirilir() throws SQLException {
+
+	// UPDATE admin_notifications SET is_read = ? WHERE id = ?;
+
+		query = queryManage.getPreparedUpdate02();
+		preparedStatement = JDBCReusableMethods.getConnection().prepareStatement(query);
+
+		preparedStatement.setInt(1,1);
+		preparedStatement.setInt(2, 7);
+
+		intResult = preparedStatement.executeUpdate();  // INSERT , DELETE ve UPDATE query'leri executeUpdate() methodu ile calistirilir.
+														// Dolayisi ile bize bir int (etkilenen satir sayisi) sonuc doner
+		System.out.println(intResult);
+
+	}
+	@Given("UpdateQuery02 sonuclari test edilir.")
+	public void update_query02_sonuclari_test_edilir() {
+
+		int expectedResult= 1;
+
+		assertEquals(intResult, expectedResult);
+
+	}
+     // eger executeQuery() methodu calismis ise sonuc ResultSet olarak doner
+	// eger executeUpdate() methodu calismis ise sonuc bize int(etkilenen satir sayisi) olarak doner.
 
 
 }
