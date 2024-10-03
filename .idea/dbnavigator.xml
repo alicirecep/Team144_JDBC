@@ -30,7 +30,18 @@ UPDATE users SET mobile = '89898998' WHERE username LIKE '%e_';
 
 SELECT * FROM admin_notifications;
 
-UPDATE admin_notifications SET is_read = ? WHERE id = ?;]]></console>
+UPDATE admin_notifications SET is_read = ? WHERE id = ?;
+
+
+SELECT * FROM device_tokens;
+
+INSERT INTO device_tokens (id, user_id, is_app,token)VALUES(3,1,5,'token144');
+
+SELECT * FROM subscribers;
+
+DELETE FROM subscribers WHERE id = 11;
+
+SELECT * FROM subscribers WHERE id = 16;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
